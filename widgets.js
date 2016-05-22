@@ -10,7 +10,7 @@ $(document).ready(function(){
       }else {
         statusHTML += '<li class="out">';
       }
-      statusHTML += emplyee.name + '</li>';
+      statusHTML += employee.name + '</li>';
     });// .each loop
     statusHTML += '</ul>';
     $('#employeeList').html(statusHTML);
