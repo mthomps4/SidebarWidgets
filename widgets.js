@@ -1,24 +1,43 @@
-//Employee in building or at desk Widget 
-var xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function () {
-  if(xhr.readyState === 4 && xhr.status === 200) {
-    var employees = JSON.parse(xhr.responseText);
+// //Employee in building or at desk Widget
+//JQuery Test Edition
+$(document).ready(function(){
+  var url="data/employees.json";
+  $.getJSON(url, function (response) {
     var statusHTML = '<ul class="bulleted">';
-    for (var i=0; i<employees.length; i += 1) {
-      if (employees[i].inoffice === true) {
+    $.each(response, function(index,employee){
+      if (employee.inoffice === true) {
         statusHTML += '<li class="in">';
-      } else {
+      }else {
         statusHTML += '<li class="out">';
       }
-      statusHTML += employees[i].name;
-      statusHTML += '</li>';
-    }
+      statusHTML += emplyee.name + '</li>';
+    });// .each loop
     statusHTML += '</ul>';
-    document.getElementById('employeeList').innerHTML = statusHTML;
-  }
-};
-xhr.open('GET', 'data/employees.json');
-xhr.send();
+    $('#employeeList').html(statusHTML);
+  });//end getJSON
+});//end Document Ready
+
+//Written with Javascript
+// var xhr = new XMLHttpRequest();
+// xhr.onreadystatechange = function () {
+//   if(xhr.readyState === 4 && xhr.status === 200) {
+//     var employees = JSON.parse(xhr.responseText);
+//     var statusHTML = '<ul class="bulleted">';
+//     for (var i=0; i<employees.length; i += 1) {
+//       if (employees[i].inoffice === true) {
+//         statusHTML += '<li class="in">';
+//       } else {
+//         statusHTML += '<li class="out">';
+//       }
+//       statusHTML += employees[i].name;
+//       statusHTML += '</li>';
+//     }
+//     statusHTML += '</ul>';
+//     document.getElementById('employeeList').innerHTML = statusHTML;
+//   }
+// };
+// xhr.open('GET', 'data/employees.json');
+// xhr.send();
 
 //Room Request Widget
 var roomRequest = new XMLHttpRequest();
